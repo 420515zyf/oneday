@@ -7,6 +7,9 @@ import router from './routers';
 //引入vuex文件
 import store from './stores';
 
+//引入iconfont字体图标样式
+import './assets/iconfont/iconfont.css';
+
 //------------------------------------------------
 
 //引入框架和插件包区--------------------------------

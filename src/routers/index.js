@@ -1,12 +1,23 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import cinemaRouter from './cinema';
+import mineRouter from './mine';
+import movieRouter from './movie';
+
 Vue.use(VueRouter);
 
 //创建vue-router实例
 var router = new VueRouter({
     routes: [
-        { path: '/', redirect: '/user' },
-    ]
+        {
+            path: '/',
+            redirect: '/movie',
+        },
+        cinemaRouter,
+        mineRouter,
+        movieRouter
+    ],
+    linkActiveClass: 'color'
 });
 
 //设置路由导航守卫---------------------
