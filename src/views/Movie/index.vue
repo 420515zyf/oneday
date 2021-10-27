@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="aa">
     <div class="xuanze">
       <ul>
         <li><router-link to="/movie/city">大连</router-link></li>
@@ -12,7 +12,6 @@
         </li>
       </ul>
     </div>
-    <h3>Movie子组件视图模块</h3>
     <router-view></router-view>
   </div>
 </template>
@@ -24,18 +23,24 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.aa {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: blue;
+  overflow: hidden;
+}
 .xuanze {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  margin-top: -16px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 30px;
   width: 100%;
   background-color: royalblue;
   ul {
     height: 30px;
     display: block;
-    margin-left: -40px;
     width: 100%;
     li {
       height: 30px;

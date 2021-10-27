@@ -1,6 +1,9 @@
 //引入communications数据文件
 import communication from "./communication";
 
+//引入cityList数据文件
+import cityList from "./cityList";
+
 //创建接口模拟服务user.js---------------------
 import Mock from "mockjs";
 
@@ -29,3 +32,6 @@ Mock.mock(/\/api\/user\/userList/, "get", {
 });
 //请求数据
 Mock.mock(/\/api\/user\/userInfo/, "get", communication);
+
+//城市请求数据
+Mock.mock(/\/api\/city\/cityList/, "get", cityList);

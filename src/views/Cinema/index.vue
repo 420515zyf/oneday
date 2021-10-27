@@ -24,13 +24,12 @@ export default {
   margin: 0px;
   padding: 0px;
   .ulLi {
-    margin-top: -16px;
     background-color: blue;
     height: 30px;
     line-height: 30px;
     ul {
-      margin-left: -40px;
       width: 100%;
+      text-align: center;
       li {
         float: left;
         list-style: none;

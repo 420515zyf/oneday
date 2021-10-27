@@ -27,6 +27,5 @@ export default {
 
 .grid-content {
   border-radius: 0px;
-  min-height: 36px;
 }
 </style>

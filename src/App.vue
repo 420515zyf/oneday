@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <el-container>
-      <el-header><Header :title="title"></Header></el-header>
-      <el-main><router-view></router-view></el-main>
-      <el-footer><Tabartab @chang="changess"></Tabartab></el-footer>
-    </el-container>
+  <div class="boss">
+    <div class="header"><Header :title="title"></Header></div>
+    <div class="main">
+      <router-view></router-view>
+    </div>
+    <div class="footer"><Tabartab @chang="changess"></Tabartab></div>
   </div>
 </template>
 
@@ -31,51 +31,60 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-header,
-.el-footer {
-  background-color: #b3c0d1;
-  color: #333;
-  text-align: center;
+body,
+html {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  height: 100%;
 }
-.el-header {
+
+.boss {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-color: khaki;
+}
+
+.header {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
   background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.el-footer {
+.main {
+  position: absolute;
+  top: 65px;
+  bottom: 65px;
+  width: 100%;
+  border: 1px solid blue;
+}
+.footer {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 60px;
   border-top: 1px solid black;
-}
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-
-.el-main {
-  background-color: #e9eef3;
-  color: #333;
-  text-align: center;
-  padding: 0px 0px 10px 0px;
-}
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
 }
 </style>
 <style lang="less">
 .color {
   color: red;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+ul li {
+  list-style: none;
 }
 </style>
