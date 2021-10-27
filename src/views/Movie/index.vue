@@ -28,7 +28,6 @@ export default {
   top: 0px;
   width: 100%;
   height: 100%;
-  background-color: blue;
   overflow: hidden;
 }
 .xuanze {
@@ -37,7 +36,6 @@ export default {
   left: 0px;
   height: 30px;
   width: 100%;
-  background-color: royalblue;
   ul {
     height: 30px;
     display: block;

@@ -1,6 +1,20 @@
 <template>
   <div class="serach">
     <input type="text" placeholder="请输入搜索内容" v-model="msg" /><br />
+    <hr />
+    <div class="huadong">
+      <h3>{{ zhungtai }}</h3>
+      <Scroller
+        @handelScrollNow="handelScrollNow"
+        @handelScrollLeave="handelScrollLeave"
+      >
+        <ul>
+          <li v-for="item in datalList" :key="item.id" @tap="paaasdas">
+            {{ item.nm }}
+          </li>
+        </ul>
+      </Scroller>
+    </div>
   </div>
 </template>
 
@@ -10,7 +24,12 @@ export default {
   data() {
     return {
       msg: "",
+      datalList: [],
+      zhungtai: "",
     };
+  },
+  created() {
+    this.qingqiu();
   },
   methods: {
     //这是一个取消axios多次请求的方法
@@ -18,6 +37,41 @@ export default {
       if (typeof this.source === "function") {
         this.source("终止请求");
       }
+    },
+    qingqiu() {
+      this.$axios.get("/api/city/cityList").then((data) => {
+        if (data.data.status == 200) {
+          this.datalList = data.data.data;
+        }
+      });
+    },
+    //正在滚动时触发的事件
+    handelScrollNow(zhi) {
+      console.log("1-2");
+      console.log(zhi.y);
+      if (zhi.y < -30 || zhi.y > 30) {
+        console.log("p1");
+        this.zhungtai = "正在继续加载中";
+        console.log(this.zhungtai);
+      }
+    },
+
+    //手指离开滚动区域时触发的事件;
+    handelScrollLeave(zhi) {
+      console.log("2-2");
+      console.log(zhi.y);
+      if (zhi.y < -30 || zhi.y > 30) {
+        console.log("p2");
+        this.$axios.get("/api/city/cityList").then((data) => {
+          if (data.data.status == 200) {
+            this.zhungtai = "加载完成";
+            console.log(this.zhungtai);
+          }
+        });
+      }
+    },
+    paaasdas() {
+      console.log("tap事件");
     },
   },
   watch: {
@@ -51,9 +105,21 @@ export default {
 .serach {
   position: absolute;
   top: 30px;
-  bottom: 30px;
+  bottom: 0px;
   width: 100%;
-  height: 100%;
   background-color: brown;
+  overflow: hidden;
+  .huadong {
+    position: absolute;
+    top: 30px;
+    bottom: 0px;
+    width: 100%;
+    background-color: yellow;
+    h3 {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+    }
+  }
 }
 </style>

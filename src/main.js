@@ -31,6 +31,10 @@ Vue.use(ElementUI);
 //引入mockjs后台模拟器
 import './mock';
 
+//注册一个全局组件
+import scroller from './components/Scroller/index.vue';
+Vue.component('Scroller', scroller);
+
 //------------------------------------------------
 
 //设置为开发环境

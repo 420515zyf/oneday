@@ -1,6 +1,6 @@
 <template>
   <div class="oo">
-    <div
+    <!-- <div
       class="city infinite-list"
       id="city"
       v-infinite-scroll="load"
@@ -22,7 +22,25 @@
           <li v-for="list in item.list" :key="list.id">{{ list.nm }}</li>
         </ul>
       </div>
-    </div>
+    </div> -->
+    <Scroller ref="resocl">
+      <div class="city1">
+        <div class="hot">
+          <h4>热门城市</h4>
+          <ul>
+            <li v-for="item in cityisHot" :key="item.id">
+              {{ item.nm }}
+            </li>
+          </ul>
+        </div>
+        <div class="cityList" id="cityList">
+          <ul v-for="item in cityList" :key="item.index">
+            <h3>{{ item.index }}</h3>
+            <li v-for="list in item.list" :key="list.id">{{ list.nm }}</li>
+          </ul>
+        </div>
+      </div>
+    </Scroller>
     <div class="daohang">
       <ul>
         <li
@@ -118,16 +136,13 @@ export default {
       }
       return true;
     },
-    //无限滚动事件
-    load() {
-      this.count += 2;
-    },
     //点击事件
     dianji(num) {
       this.num = num;
       var uu = document.getElementById("cityList");
       var ul = uu.getElementsByTagName("ul")[num];
-      this.$refs.resocl.scrollTop = parseInt(ul.offsetTop) + 335;
+      var number = -parseInt(ul.offsetTop);
+      this.$refs.resocl.toScrollTop(number);
     },
   },
 };
@@ -139,7 +154,6 @@ export default {
   top: 0px;
   bottom: 0px;
   width: 100%;
-  height: 100%;
   overflow: hidden;
 }
 .color {
@@ -152,20 +166,16 @@ h3 {
   font-weight: normal;
 }
 
-.city {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
+.city1 {
   width: 100%;
   padding-right: 20px;
   background-color: #fff3f1;
-  overflow: hidden;
   .hot {
-    position: relative;
     width: 100%;
-    padding-top: 10px;
     overflow: hidden;
+    h4 {
+      margin-bottom: 10px;
+    }
     ul {
       width: 100%;
       li {
@@ -175,7 +185,7 @@ h3 {
         width: 25%;
         float: left;
         margin-left: 18px;
-        margin-top: 20px;
+        margin-bottom: 20px;
         text-align: center;
         font-size: 14px;
       }
@@ -183,14 +193,10 @@ h3 {
   }
 
   .cityList {
-    position: absolute;
-    top: 335px;
-    bottom: 0px;
     width: 100%;
-    padding-top: 10px;
+    display: block;
     ul {
       width: 100%;
-      overflow: hidden;
       padding-bottom: 10px;
       h3 {
         margin-bottom: 10px;
@@ -200,6 +206,7 @@ h3 {
         font-size: 14px;
         line-height: 30px;
         text-indent: 8px;
+        border: none;
       }
     }
   }
