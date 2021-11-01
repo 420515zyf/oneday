@@ -4,8 +4,11 @@ import communication from "./communication";
 //引入cityList数据文件
 import cityList from "./cityList";
 
+//引入cityNowPlay数据文件
+import cityNowplay from "./cityNowplay";
+
 //创建接口模拟服务user.js---------------------
-import Mock from "mockjs";
+import Mock from 'mockjs';
 
 //获取登录
 Mock.mock(/\/api\/user\/login/, "get", {
@@ -66,3 +69,6 @@ Mock.mock(/\/api\/city\/citySwith/, "get", {
         id: "75"
     }
 })
+
+//即将上映
+Mock.mock(/\/api\/city\/cityNowplay/, "get", cityNowplay);

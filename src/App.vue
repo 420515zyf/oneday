@@ -38,10 +38,16 @@ export default {
   },
   watch: {
     "$route.path"(newVal, oldVal) {
-      if (newVal == "/movie/detail/%5Bobject%20Object%5D") {
-        this.isFanHui = true;
-      } else {
-        this.isFanHui = false;
+      if (this.$store.state.city.id) {
+        if (
+          newVal == "/movie/comingsoon/detail/" + this.$store.state.city.id ||
+          newVal ==
+            "/movie/nowplaying/detail/" + this.$store.state.city.cityPlayId
+        ) {
+          this.isFanHui = true;
+        } else {
+          this.isFanHui = false;
+        }
       }
     },
   },

@@ -47,13 +47,13 @@ export default {
       });
     },
     idBtn(id) {
-      this.$router.push({ name: "detail", params: { id } });
+      this.$router.push({ name: "comingsoonDetail", params: { id } });
     },
   },
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .ComingSoon {
   position: absolute;
   top: 30px;

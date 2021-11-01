@@ -13,15 +13,24 @@ export default {
             name: 'comingSoon'
         },
         {
-            path: '/movie/detail/:id',
-            name: 'detail',
+            path: '/movie/comingsoon/detail/:id',
+            name: 'comingsoonDetail',
             components: {
+                default: () => import('../../components/ComingSoon/index.vue'),
                 detail: () => import('../../views/Movie/detail.vue')
             }
         },
         {
             path: '/movie/nowplaying',
             component: () => import('../../components/NowPlaying/index.vue')
+        },
+        {
+            path: '/movie/nowplaying/detail/:id',
+            name: 'nowplayingDetail',
+            components: {
+                default: () => import('../../components/NowPlaying/index.vue'),
+                detail: () => import('../../views/Movie/detail.vue')
+            }
         },
         {
             path: '/movie/search',

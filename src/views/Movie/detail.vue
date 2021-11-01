@@ -5,6 +5,7 @@
       <button @click="btn">按钮</button>
       <h3>城市名称：{{ listDetail.nm }}</h3>
       <h3>城市id：{{ listDetail.id }}</h3>
+      <h3 v-if="isfalse">豆瓣评分：{{ listDetail.playIsHot }}</h3>
     </div>
   </div>
 </template>
@@ -16,6 +17,7 @@ export default {
       // id: this.$route.query.id,
       id: this.$route.params.id,
       listDetail: {},
+      isfalse: false,
     };
   },
   mounted() {
@@ -26,23 +28,52 @@ export default {
       console.log(this.id);
     },
     qingqiu() {
-      console.log(this.id);
-      this.$axios.get("/api/city/cityList").then((data) => {
-        if (data.data.status == 200) {
-          var list = data.data.data;
-          list.some((item, i) => {
-            if (item.id == this.id) {
-              this.listDetail = item;
-            }
-          });
-        }
-      });
+      if (
+        this.$route.path ==
+        "/movie/comingsoon/detail/" + this.$store.state.city.id
+      ) {
+        this.$axios.get("/api/city/cityList").then((data) => {
+          if (data.data.status == 200) {
+            var list = data.data.data;
+            list.some((item, i) => {
+              if (item.id == this.id) {
+                this.listDetail = item;
+                this.listDetail.playIsHot = "";
+              }
+            });
+            this.isfalse = false;
+          }
+        });
+      } else if (
+        this.$route.path ==
+        "/movie/nowplaying/detail/" + this.$store.state.city.cityPlayId
+      ) {
+        this.$axios.get("/api/city/cityNowplay").then((data) => {
+          if (data.data.status == 200) {
+            var list = data.data.data;
+            list.some((item, i) => {
+              if (item.id == this.id) {
+                this.listDetail = item;
+              }
+            });
+            this.isfalse = true;
+          }
+        });
+      }
     },
   },
 };
 </script>
 
 <style lang="less" scoped>
+@keyframes xiangqing {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .xiangqin {
   position: absolute;
   top: 0px;
@@ -56,6 +87,7 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  animation: 0.5s xiangqing;
   h1 {
     text-align: center;
   }
