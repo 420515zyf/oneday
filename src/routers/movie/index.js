@@ -2,21 +2,29 @@ export default {
     path: '/movie',
     component: () => import('../../views/Movie/index.vue'),
     children: [
-        { path: '/movie', redirect: 'comingsoon' },
+        { path: '/movie', redirect: '/movie/city' },
         {
-            path: 'city',
+            path: '/movie/city',
             component: () => import('../../components/City/index.vue')
         },
         {
-            path: 'comingsoon',
-            component: () => import('../../components/ComingSoon/index.vue')
+            path: '/movie/comingsoon/:id',
+            component: () => import('../../components/ComingSoon/index.vue'),
+            name: 'comingSoon'
         },
         {
-            path: 'nowplaying',
+            path: '/movie/detail/:id',
+            name: 'detail',
+            components: {
+                detail: () => import('../../views/Movie/detail.vue')
+            }
+        },
+        {
+            path: '/movie/nowplaying',
             component: () => import('../../components/NowPlaying/index.vue')
         },
         {
-            path: 'search',
+            path: '/movie/search',
             component: () => import('../../components/Search/index.vue')
         }
     ],

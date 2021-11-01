@@ -31,9 +31,13 @@ Vue.use(ElementUI);
 //引入mockjs后台模拟器
 import './mock';
 
-//注册一个全局组件
+//注册一个适用于滑动的全局组件
 import scroller from './components/Scroller/index.vue';
 Vue.component('Scroller', scroller);
+
+//注册一个loading全局组件
+import loading from './components/Loading/index.vue';
+Vue.component('Loadings', loading);
 
 //------------------------------------------------
 

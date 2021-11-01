@@ -2,8 +2,16 @@
   <div class="aa">
     <div class="xuanze">
       <ul>
-        <li><router-link to="/movie/city">大连</router-link></li>
-        <li><router-link to="/movie/comingsoon">正在热映</router-link></li>
+        <li @click="citySwith">
+          <router-link to="/movie/city">{{
+            this.$store.state.city.nm
+          }}</router-link>
+        </li>
+        <li>
+          <router-link :to="'/movie/comingsoon/' + this.dataId"
+            >正在热映</router-link
+          >
+        </li>
         <li><router-link to="/movie/nowplaying">即将上映</router-link></li>
         <li>
           <router-link to="/movie/search"
@@ -12,13 +20,54 @@
         </li>
       </ul>
     </div>
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    <router-view name="detail"></router-view>
   </div>
 </template>
 
 <script>
+import { messageBox } from "../../components/js/index";
 export default {
   name: "Movie",
+  data() {
+    return {
+      dataId: this.$store.state.city.id || 1,
+      cityNow: {},
+    };
+  },
+  mounted() {
+    this.citySwith();
+  },
+  methods: {
+    citySwith() {
+      setTimeout(() => {
+        this.$axios.get("/api/city/citySwith").then((data) => {
+          this.cityNow = data.data;
+          if (this.cityNow.status == 200) {
+            if (this.cityNow.data.id == this.$store.state.city.id) {
+              return;
+            }
+            var that = this;
+            messageBox({
+              title: "定位",
+              content: this.cityNow.data.nm,
+              cancel: "取消",
+              ok: "切换定位",
+              handleCancel() {},
+              handleOk() {
+                window.localStorage.setItem("cityNM", that.cityNow.data.nm);
+                window.localStorage.setItem("cityId", that.cityNow.data.id);
+                window.location.reload();
+              },
+            });
+            return;
+          }
+        });
+      }, 1100);
+    },
+  },
 };
 </script>
 

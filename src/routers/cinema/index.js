@@ -6,6 +6,10 @@ export default {
         {
             path: '/cinema/cilist',
             component: () => import('../../components/Cilist/index.vue')
+        },
+        {
+            path: '/cinema/pinpai',
+            component: () => import('../../components/pinpai/index.vue')
         }
     ]
 }

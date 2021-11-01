@@ -3,7 +3,7 @@
     <div class="ulLi">
       <ul>
         <li><router-link to="/cinema/cilist">全城</router-link></li>
-        <li><router-link to="">品牌</router-link></li>
+        <li><router-link to="/cinema/pinpai">品牌</router-link></li>
         <li><router-link to="">特色</router-link></li>
       </ul>
     </div>

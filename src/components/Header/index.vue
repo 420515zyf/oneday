@@ -1,8 +1,10 @@
 <template>
   <div>
     <el-row>
-      <el-col :span="24"
-        ><div class="grid-content bg-purple-dark">{{ title }}</div></el-col
+      <el-col :span="24">
+        <div class="grid-content bg-purple-dark">
+          {{ title }}
+        </div></el-col
       >
     </el-row>
   </div>

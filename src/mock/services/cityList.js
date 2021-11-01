@@ -73,6 +73,7 @@ export default {
         { isHot: 0, nm: '安阳市', id: 71, miaoshu: 'anyang' },
         { isHot: 0, nm: '阿克苏市', id: 72, miaoshu: 'akesu' },
         { isHot: 0, nm: '阿勒泰市', id: 73, miaoshu: 'aletai' },
-        { isHot: 0, nm: '安庆市', id: 74, miaoshu: 'anqin' }
+        { isHot: 0, nm: '安庆市', id: 74, miaoshu: 'anqin' },
+        { isHot: 0, nm: '大连市', id: 75, miaoshu: 'dalian' },
     ]
 }

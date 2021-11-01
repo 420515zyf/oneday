@@ -2,7 +2,8 @@
   <div class="serach">
     <input type="text" placeholder="请输入搜索内容" v-model="msg" /><br />
     <hr />
-    <div class="huadong">
+    <Loadings v-if="isLoading"></Loadings>
+    <div v-else class="huadong">
       <h3>{{ zhungtai }}</h3>
       <Scroller
         @handelScrollNow="handelScrollNow"
@@ -26,6 +27,7 @@ export default {
       msg: "",
       datalList: [],
       zhungtai: "",
+      isLoading: true,
     };
   },
   created() {
@@ -42,30 +44,23 @@ export default {
       this.$axios.get("/api/city/cityList").then((data) => {
         if (data.data.status == 200) {
           this.datalList = data.data.data;
+          this.isLoading = false;
         }
       });
     },
     //正在滚动时触发的事件
     handelScrollNow(zhi) {
-      console.log("1-2");
-      console.log(zhi.y);
       if (zhi.y < -30 || zhi.y > 30) {
-        console.log("p1");
         this.zhungtai = "正在继续加载中";
-        console.log(this.zhungtai);
       }
     },
 
     //手指离开滚动区域时触发的事件;
     handelScrollLeave(zhi) {
-      console.log("2-2");
-      console.log(zhi.y);
       if (zhi.y < -30 || zhi.y > 30) {
-        console.log("p2");
         this.$axios.get("/api/city/cityList").then((data) => {
           if (data.data.status == 200) {
             this.zhungtai = "加载完成";
-            console.log(this.zhungtai);
           }
         });
       }
@@ -86,7 +81,6 @@ export default {
           }),
         })
         .then((data) => {
-          console.log(1111);
           console.log(data.data.data);
         })
         .catch((err) => {

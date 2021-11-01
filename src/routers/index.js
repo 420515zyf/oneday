@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import cinemaRouter from './cinema';
 import mineRouter from './mine';
-import movieRouter from './movie';
+import movieRouter from './movie/index';
 
 Vue.use(VueRouter);
 

@@ -17,7 +17,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.scrollOptions();
-    }, 2000);
+    }, 1100);
   },
   methods: {
     scrollOptions() {
@@ -34,12 +34,10 @@ export default {
       this.scrolls = scroll;
       //正在滚动时触发的事件
       scroll.on("scroll", (zhi) => {
-        console.log("1 - 1");
         this.$emit("handelScrollNow", zhi);
       });
       // 手指离开滚动区域时触发的事件;
       scroll.on("touchEnd", (haha) => {
-        console.log("2 - 1");
         this.$emit("handelScrollLeave", haha);
       });
     },

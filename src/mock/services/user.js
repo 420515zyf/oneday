@@ -35,3 +35,34 @@ Mock.mock(/\/api\/user\/userInfo/, "get", communication);
 
 //城市请求数据
 Mock.mock(/\/api\/city\/cityList/, "get", cityList);
+
+//正在热映请求数据-----------------------
+Mock.mock(/\/api\/city\/comingSoon\/1/, "get", {
+    data: [
+        { name: "北京市", id: 1 },
+    ]
+});
+Mock.mock(/\/api\/city\/comingSoon\/2/, "get", {
+    status: 200,
+    message: "success",
+    data: [
+        { name: "天津市", id: 2 },
+    ]
+});
+Mock.mock(/\/api\/city\/comingSoon\/3/, "get", {
+    data: [
+        { name: "沈阳市", id: 3 }
+    ]
+});
+
+//--------------------------------------
+
+//城市切换
+Mock.mock(/\/api\/city\/citySwith/, "get", {
+    status: 200,
+    message: "success",
+    data: {
+        nm: "大连市",
+        id: "75"
+    }
+})

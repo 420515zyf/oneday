@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>NowPlaying</h1>
+  <div class="NowPlaying">
+    <h2>---NowPlaying即将上映---</h2>
   </div>
 </template>
 
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style lang="less">
+.NowPlaying {
+  padding-top: 30px;
+}
 </style>
