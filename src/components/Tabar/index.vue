@@ -50,15 +50,12 @@ export default {
   methods: {
     btn1() {
       this.$emit("chang", "喵喵电影");
-      console.log(1);
     },
     btn2() {
       this.$emit("chang", "喵喵影院");
-      console.log(2);
     },
     btn3() {
       this.$emit("chang", "我的喵喵");
-      console.log(3);
     },
   },
 };

@@ -1,6 +1,11 @@
 <template>
   <div class="boss">
-    <div class="header"><Header :title="title"></Header></div>
+    <div class="header">
+      <div class="fanhui" v-if="isFanHui" @click="fanhui">
+        <span>返回</span>
+      </div>
+      <Header :title="title"></Header>
+    </div>
     <div class="main">
       <router-view></router-view>
     </div>
@@ -16,16 +21,29 @@ export default {
   data() {
     return {
       title: "喵喵电影",
+      isFanHui: false,
     };
   },
   methods: {
     changess(obj) {
       this.title = obj;
     },
+    fanhui() {
+      this.$router.go(-1);
+    },
   },
   components: {
     Header,
     Tabartab,
+  },
+  watch: {
+    "$route.path"(newVal, oldVal) {
+      if (newVal == "/movie/detail/%5Bobject%20Object%5D") {
+        this.isFanHui = true;
+      } else {
+        this.isFanHui = false;
+      }
+    },
   },
 };
 </script>
@@ -73,6 +91,13 @@ html {
   width: 100%;
   height: 60px;
   border-top: 1px solid black;
+}
+.fanhui {
+  position: absolute;
+  left: 5%;
+  span {
+    color: white;
+  }
 }
 </style>
 <style lang="less">
