@@ -2,15 +2,16 @@ import Vue from "vue";
 import MessageBox from "./MessageBox/index.vue";
 
 export var messageBox = (function () {
-    var defaults = { //默认值：
-        title: '',  //标题
-        content: '',    //内容  城市名
-        cancel: '',     //取消
-        ok: '',     //确认 | 切换城市
-        handleCancel: null, //取消事件 
-        handleOk: null  //确认事件 | 切换城市事件
-    };
     return function (opts) {   //配置参数
+        var defaults = { //默认值：
+            title: '',  //标题
+            content: '',    //内容  城市名
+            cancel: '',     //取消
+            ok: '',     //确认 | 切换城市
+            handleCancel: null, //取消事件 
+            handleOk: null  //确认事件 | 切换城市事件
+        };
+
         for (var attr in opts) {
             defaults[attr] = opts[attr];
         }

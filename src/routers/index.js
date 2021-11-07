@@ -8,6 +8,7 @@ Vue.use(VueRouter);
 
 //创建vue-router实例
 var router = new VueRouter({
+    mode: 'hash',
     routes: [
         {
             path: '/',

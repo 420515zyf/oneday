@@ -24,6 +24,7 @@
       <router-view></router-view>
     </keep-alive>
     <router-view name="detail"></router-view>
+    <router-view name="yanzhengma"></router-view>
   </div>
 </template>
 
